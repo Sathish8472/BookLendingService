@@ -1,0 +1,11 @@
+bin/
+obj/
+*.user
+*.suo
+*.DS_Store
+*.vscode
+*.idea
+*.git
+.gitignore
+Dockerfile
+docker-compose*
