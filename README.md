@@ -78,16 +78,12 @@ Open Swagger UI:
 The project uses a multi-stage Dockerfile.
 
 ### Build the image:
-
-# 
 ```
 cd src/BookLendingService.API
 docker build -t booklendingservice .
 ```
 
 ### Run the container:
-
-# 
 ```
 docker run -d -p 5001:80 --name booklendingservice-container booklendingservice
 ```
@@ -98,11 +94,8 @@ Swagger inside container:
 
 Port **80** is used inside the container; port **5001** is exposed externally.
 
----
 
-## ☁️ **5. Deploying to AWS ECS Fargate (IaC)**
-
-# 
+## **5. Deploying to AWS ECS Fargate (IaC)**
 The CloudFormation template in:
 
 ```
@@ -120,15 +113,11 @@ provisions:
 - Basic networking via parameters
 
 ### Required Parameters:
-
-# 
-- **ImageUrl** – your ECR image URL
+- **ImageUrl** – ECR image URL
 - **SubnetId1** / **SubnetId2** – two public subnets
 - **SecurityGroupId** – SG that allows inbound **port 80**
 
 ### Example AWS CLI Deployment
-
-# 
 ```
 aws cloudformation deploy \
   --template-file Infrastructure/ecs-fargate.yaml \
@@ -141,57 +130,35 @@ aws cloudformation deploy \
       SecurityGroupId=<sg-id>
 ```
 
-Once deployed, ECS will pull your image and run the API on Fargate with a public IP.
-
----
+Once deployed, ECS will pull the image and run the API on Fargate with a public IP.
 
 ## **6. Design Decisions**
 
 ### **1. Simple layered structure**
-
-# 
-
 Clear separation between controllers, services, and repositories keeps the service maintainable and extensible.
 
 ### **2. Consistent API responses**
-
-# 
-Every endpoint returns `ApiResponse<T>`, giving consumers predictable structure and error information.
+Every endpoint returns `ApiResponse<T>`, giving predictable structure and error information.
 
 ### **3. Docker-first approach**
-
-# 
 The API is configured to listen on port 80 inside containers, avoiding port mismatches in ECS/Fargate.
 
 ### **4. CloudFormation for deployability**
-
-# 
 A single YAML template demonstrates IaC discipline while keeping the setup simple and readable.
 
 ### **5. Avoiding unnecessary complexity**
-
-# 
 Given the assignment size, patterns like CQRS, Clean Architecture, MediatR, or unit tests were intentionally avoided to keep the service lightweight.
 
----
-
 ## **7. Future Improvements**
-
-# 
 If this were expanded into a real service:
-
 - Replace in-memory DB with PostgreSQL or DynamoDB
-- Add authentication/authorization (JWT/Cognito)
+- Add authentication/authorization (JWT)
 - Add integration tests and contract tests
 - Implement CI/CD (GitHub Actions → ECR → ECS)
 - Add pagination, filtering, and catalogue management
 - Monitoring dashboards and alerts (CloudWatch/Datadog)
 
----
-
-## **8. Conclusion**
-
-# 
+## **8. Conclusion** 
 This solution demonstrates how a small .NET microservice can be developed, containerized, and prepared for cloud deployment using AWS ECS Fargate.
 
 The same structure and delivery approach scale to more complex services: clean architecture, predictable API design, and infrastructure expressed as code.
