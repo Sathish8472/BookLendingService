@@ -29,7 +29,9 @@ BookLendingService/
 │       ├── Dockerfile
 │       ├── .dockerignore
 │       └── Program.cs
-│
+└── tests/
+|    └── BookLendingService.Tests/
+|
 └── Infrastructure/
     └── ecs-fargate.yaml                # CloudFormation template for AWS deployment
 ```
@@ -72,8 +74,39 @@ dotnet run
 Open Swagger UI:
  http://localhost:5001/swagger
 
+## **4. Unit Testing
+This project includes a dedicated **xUnit** test project under the `tests/` folder:
 
-## **4. Running with Docker**
+### Frameworks Used
+
+- **xUnit** – test framework
+- **Moq** – mocking dependencies
+- **FluentAssertions** – readable and expressive assertions
+
+### Coverage Included
+The test suite provides functional coverage:
+- **BookServiceTests**
+
+- Add book
+- Get all books
+- Checkout logic (success/failure cases)
+- Return logic (success/failure cases)
+- **BooksControllerTests**
+
+- Validates HTTP responses (200/400)
+- Ensures controller delegates correctly to service
+- Tests behavior for all major endpoints (Add, List, Checkout, Return)
+
+### Running Tests
+From the solution root:
+```
+dotnet test
+```
+
+All tests run against mocked dependencies, ensuring the API logic works independently of the database and infrastructure layers.
+
+
+## **5. Running with Docker**
 
 The project uses a multi-stage Dockerfile.
 
@@ -95,7 +128,7 @@ Swagger inside container:
 Port **80** is used inside the container; port **5001** is exposed externally.
 
 
-## **5. Deploying to AWS ECS Fargate (IaC)**
+## **6. Deploying to AWS ECS Fargate (IaC)**
 The CloudFormation template in:
 
 ```
@@ -132,7 +165,7 @@ aws cloudformation deploy \
 
 Once deployed, ECS will pull the image and run the API on Fargate with a public IP.
 
-## **6. Design Decisions**
+## **7. Design Decisions**
 
 ### **1. Simple layered structure**
 Clear separation between controllers, services, and repositories keeps the service maintainable and extensible.
