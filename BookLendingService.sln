@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36705.20
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLendingService.API", "src\BookLendingService.API\BookLendingService.API.csproj", "{5582622C-3EF3-4CCB-8F08-71CD7DC68639}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLendingService.Tests", "tests\BookLendingService.Tests\BookLendingService.Tests.csproj", "{7B1F7064-2AAE-433D-BE94-39416BDCDBD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5582622C-3EF3-4CCB-8F08-71CD7DC68639}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5582622C-3EF3-4CCB-8F08-71CD7DC68639}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5582622C-3EF3-4CCB-8F08-71CD7DC68639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B1F7064-2AAE-433D-BE94-39416BDCDBD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B1F7064-2AAE-433D-BE94-39416BDCDBD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B1F7064-2AAE-433D-BE94-39416BDCDBD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B1F7064-2AAE-433D-BE94-39416BDCDBD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
