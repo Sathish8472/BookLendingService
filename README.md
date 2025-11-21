@@ -74,7 +74,7 @@ dotnet run
 Open Swagger UI:
  http://localhost:5001/swagger
 
-## **4. Unit Testing
+## 4. Unit Testing
 This project includes a dedicated **xUnit** test project under the `tests/` folder:
 
 ### Frameworks Used
@@ -121,7 +121,7 @@ docker build -t booklendingservice .
 docker run -d -p 5001:80 --name booklendingservice-container booklendingservice
 ```
 
-Swagger inside container:
+Access Swagger inside the container:
 
  http://localhost:5001/swagger
 
@@ -180,9 +180,9 @@ The API is configured to listen on port 80 inside containers, avoiding port mism
 A single YAML template demonstrates IaC discipline while keeping the setup simple and readable.
 
 ### **5. Avoiding unnecessary complexity**
-Given the assignment size, patterns like CQRS, Clean Architecture, MediatR, or unit tests were intentionally avoided to keep the service lightweight.
+Given the assignment size, patterns like CQRS, Clean Architecture, MediatR were intentionally avoided to keep the service lightweight.
 
-## **7. Future Improvements**
+## **8. Future Improvements**
 If this were expanded into a real service:
 - Replace in-memory DB with PostgreSQL or DynamoDB
 - Add authentication/authorization (JWT)
@@ -191,7 +191,7 @@ If this were expanded into a real service:
 - Add pagination, filtering, and catalogue management
 - Monitoring dashboards and alerts (CloudWatch/Datadog)
 
-## **8. Conclusion** 
+## **9. Conclusion** 
 This solution demonstrates how a small .NET microservice can be developed, containerized, and prepared for cloud deployment using AWS ECS Fargate.
 
 The same structure and delivery approach scale to more complex services: clean architecture, predictable API design, and infrastructure expressed as code.
